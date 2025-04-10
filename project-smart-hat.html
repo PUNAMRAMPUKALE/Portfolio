@@ -1,108 +1,485 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Hat Project | Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Smart Hat Project | Portfolio
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>
   <style>
+   :root {
+      --bg-light: #ffffff;
+      --text-dark: #1c1c1c;
+      --accent: #003366; /* Oxford Blue */
+      --secondary-accent: #b38b6d; /* Camel */
+      --highlight: #556b2f; /* Dark Olive Green */
+      --glass: rgba(255, 255, 255, 0.75);
+      --glass-border: rgba(0, 0, 0, 0.08);
+    }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #1c1c1c;
-      padding: 2rem;
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
       line-height: 1.6;
     }
     .container {
-      max-width: 900px;
-      margin: auto;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
     }
     h1, h2, h3 {
-      color: #003366;
+      color: var(--accent);
       margin-top: 1.5rem;
+      animation: fadeInDown 0.5s ease forwards;
     }
     .highlight {
-      background-color: #f0f8ff;
+      background-color: #e0f2fe;
       padding: 1rem;
-      border-left: 5px solid #003366;
+      border-left: 5px solid var(--accent);
       margin: 1.5rem 0;
-    }
-    img, video {
-      max-width: 100%;
-      margin-top: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      animation: fadeInUp 0.6s ease forwards;
     }
     a {
-      color: #003366;
-      text-decoration: underline;
+      color: var(--accent);
+      text-decoration: none;
     }
     .btn {
       display: inline-block;
-      background: #003366;
+      background: var(--accent);
       color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
       text-decoration: none;
       margin-top: 2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    .btn:hover {
+      background: var(--highlight);
+      transform: scale(1.05);
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .video-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .video-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    }
+    .video-card video {
+      width: 100%;
+      display: block;
+    }
+    .video-title {
+      padding: 1rem;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      text-align: center;
     }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
     }
     .gallery img {
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
     }
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+    .gallery img:active {
+      transform: scale(0.96);
+    }
+    .top-image {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .top-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 24px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+      border: 2px solid rgba(0, 51, 102, 0.1);
+      background: white;
+      padding: 6px;
+    }
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
-</head>
-<body>
+
+ </head>
+ <body>
   <div class="container">
-    <h1 class="animate__animated animate__fadeInDown">AI-Powered Smart Hat for Visually Impaired Navigation</h1>
-    <img src="assets/images/smart-hat.jpg" alt="Smart Hat project screenshot" class="animate__animated animate__fadeInUp" />
-    <video controls poster="assets/images/smart-hat.jpg">
-      <source src="assets/videos/smart-hat-demo-1.mp4" type="video/mp4">
-    </video>
-    <video controls poster="assets/images/smart-hat.jpg">
-      <source src="assets/videos/smart-hat-demo-2.mp4" type="video/mp4">
-    </video>
-    <div class="gallery">
-      <img src="assets/images/smart-hat-1.jpg" alt="Screenshot 1">
-      <img src="assets/images/smart-hat-2.jpg" alt="Screenshot 2">
-      <img src="assets/images/smart-hat-3.jpg" alt="Screenshot 3">
-      <img src="assets/images/smart-hat-4.jpg" alt="Screenshot 4">
-      <img src="assets/images/smart-hat-5.jpg" alt="Screenshot 5">
-      <img src="assets/images/smart-hat-6.jpg" alt="Screenshot 6">
+   <h1>
+    AI-Powered Smart Hat for Visually Impaired Navigation
+   </h1>
+   <h2>
+    1. Overview
+   </h2>
+   <p>
+    The Smart Hat Detection System is designed to monitor a physical environment using a Raspberry Pi. It leverages a Flask web server that is developed to expose multiple HTTP endpoints (using both GET and POST methods) to:
+   </p>
+   <ul>
+    <li>
+     <strong>
+      Control the Detection Process:
+     </strong>
+     Start/stop detection and check the system status.
+    </li>
+    <li>
+     <strong>
+      Manage Configuration:
+     </strong>
+     Update and retrieve system settings via configuration files.
+    </li>
+    <li>
+     <strong>
+      Log Detection Events:
+     </strong>
+     Log events both locally (in a text file) and remotely in Firebase Firestore, ensuring robust data backup.
+    </li>
+    <li>
+     <strong>
+      Trigger Audible Alerts:
+     </strong>
+     Use the espeak command to produce voice alerts based on detection events.
+    </li>
+   </ul>
+
+   <p>
+    Additionally, a custom HTML control panel provides a user-friendly interface to interact with all these endpoints, and ngrok is used to expose the local Flask server to the public internet without router configuration.
+   </p>
+   <h2>
+    2. System Architecture
+   </h2>
+   <h3>
+    2.1. Physical Hardware Components
+   </h3>
+   <ul>
+    <li>
+     <strong>
+      Raspberry Pi:
+     </strong>
+     The central device running the detection code and Flask web server. It interfaces directly with the attached camera and ultrasonic sensors.
+    </li>
+    <li>
+     <strong>
+      Camera Module:
+     </strong>
+     Captures live video for detection and streaming. It is connected via the Raspberry Pi’s CSI port and supplies real-time images for processing.
+    </li>
+    <li>
+     <strong>
+      Ultrasonic Sensors:
+     </strong>
+     Multiple sensors (e.g., HC-SR04) are connected to the Raspberry Pi’s GPIO pins (for trigger and echo). These sensors measure distances to help trigger detection events.
+    </li>
+    <li>
+     <strong>
+      Breadboard &amp; Jumper Wires:
+     </strong>
+     Used to connect the ultrasonic sensors to the Raspberry Pi reliably, ensuring proper wiring for sensor data collection.
+    </li>
+    <li>
+     <strong>
+      Power Supply:
+     </strong>
+     A dedicated 5V adapter (typically 3A or higher) ensures stable power delivery to the Raspberry Pi and connected components.
+    </li>
+    <li>
+     <strong>
+      Optional Enclosure:
+     </strong>
+     An enclosure or custom 3D-printed case can be used to house the Raspberry Pi, camera, and sensors for better organization and protection.
+    </li>
+   </ul>
+   <h3>
+    2.2. Software Components
+   </h3>
+   <ul>
+    <li>
+     <strong>
+      Flask Web Server:
+     </strong>
+     Runs on the Raspberry Pi and exposes multiple HTTP endpoints for system control and monitoring. You wrote both GET and POST endpoints to handle actions such as starting/stopping detection, configuration management, logging, and triggering alerts.
+    </li>
+    <li>
+     <strong>
+      Firebase Firestore:
+     </strong>
+     A cloud-based NoSQL database that stores detection logs remotely. Integrating Firebase Firestore to ensure that detection events are backed up and accessible for remote monitoring.
+    </li>
+    <li>
+     <strong>
+      Ngrok:
+     </strong>
+     A tunneling service that creates a secure, temporary public URL to expose your local Flask server to the internet. This allows remote access without router configuration.
+    </li>
+    <li>
+     <strong>
+      Control Panel (HTML Interface):
+     </strong>
+     A custom web page (control_panel.html) that you developed. It aggregates all your endpoints into one interface with buttons and links, using JavaScript (Fetch API) to send GET and POST requests.
+    </li>
+   </ul>
+   <div class="top-image">
+    <img src="assets/images/hat-with-hardware.jpg" alt="Smart Hat Hardware">
+  </div>  
+   <div class="video-grid">
+    <div class="video-card">
+     <video controls="" preload="metadata">
+      <source src="assets/videos/Record_working_features.mp4#t=0.1" type="video/mp4"/>
+     </video>
+     <div class="video-title">
+      Dashboard View
+     </div>
     </div>
-
-    <h2>Challenge</h2>
-    <div class="highlight">
-      How can we empower visually impaired individuals with a wearable solution that provides 360-degree obstacle awareness in real time without the use of hands?
+    <div class="video-card">
+      <video controls="" preload="metadata">
+       <source src="assets/videos/Record_navigation_video.mp4#t=0.1" type="video/mp4"/>
+      </video>
+      <div class="video-title">
+       Navigation Simulation
+      </div>
+     </div>
+     <div class="video-card">
+      <video controls="" preload="metadata">
+       <source src="assets/videos/Record_detection_video.mp4#t=0.1" type="video/mp4"/>
+      </video>
+      <div class="video-title">
+       Live Detection Capture
+      </div>
+     </div>
+   </div>
+   <div class="gallery">
+    <div class="image-card">
+      <img src="assets/images/Screenshot_2025-04-04-17-05-12-19_40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="Screenshot 1">
     </div>
-
-    <h2>Solution</h2>
-    <p>
-      We developed a smart wearable hat equipped with an AI-powered object detection camera, ultrasonic sensors, and a low-light infrared module. It seamlessly connects with a mobile/web interface and provides intuitive guidance through audio cues. Technologies like Google Maps GIS, BLE, and IMU sensors further enhance the experience.
-    </p>
-
-    <h2>Project Flow</h2>
-    <ol>
-      <li>Research & Requirement Gathering</li>
-      <li>Prototyping with Arduino, Raspberry Pi</li>
-      <li>Integrating TensorFlow Lite for object recognition</li>
-      <li>Backend integration for data tracking (Node.js, Firebase)</li>
-      <li>Frontend interface (React, Flutter)</li>
-      <li>User testing & iterations</li>
-    </ol>
-
-    <a href="index.html" class="btn">← Back to Portfolio</a>
+    <div class="image-card">
+      <img src="assets/images/Screenshot_2025-04-04-19-44-29-80_40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="Screenshot 2">
+    </div>
+    <div class="image-card">
+      <img src="assets/images/Screenshot_2025-04-04-17-05-07-18_40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="Screenshot 3">
+    </div>
+    <div class="image-card">
+      <img src="assets/images/Screenshot_2025-04-04-17-04-38-11_40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="Screenshot 4">
+    </div>
   </div>
-</body>
+   <div class="container">
+
+
+    <h2>
+     3. Summary of Achievements
+    </h2>
+    <ol>
+     <li>
+      <strong>
+       Integrated Hardware and Software
+      </strong>
+      <ul>
+       <li>
+        Assembled a Raspberry Pi-based system with a camera module and ultrasonic sensors for real-time detection.
+       </li>
+       <li>
+        Developed a Flask web server with multiple GET and POST endpoints to control the detection process, manage configurations, log events locally and remotely (via Firebase Firestore), and trigger voice alerts using espeak.
+       </li>
+      </ul>
+     </li>
+     <li>
+      <strong>
+       User-Friendly Control Panel
+      </strong>
+      <ul>
+       <li>
+        Created a custom HTML control panel that aggregates all commands, enabling easy system management without manually typing URLs.
+       </li>
+      </ul>
+     </li>
+     <li>
+      <strong>
+       Remote Accessibility
+      </strong>
+      <ul>
+       <li>
+        Used ngrok to expose the local server to the public internet, allowing remote monitoring and control from any internet-connected device.
+       </li>
+      </ul>
+     </li>
+     <li>
+      <strong>
+       Collaboration and Cloud Integration
+      </strong>
+      <ul>
+       <li>
+        Successfully integrated Firebase Firestore for remote logging, ensuring that detection events are backed up and accessible for analysis.
+       </li>
+      </ul>
+     </li>
+     <li>
+      <strong>
+       Overall System Workflow
+      </strong>
+      <ul>
+       <li>
+        The physical hardware continuously monitors the environment and processes real-time data.
+       </li>
+       <li>
+        Detection events are logged both locally and remotely.
+       </li>
+       <li>
+        The Flask server exposes endpoints for starting/stopping detection, retrieving system status, updating configurations, and triggering alerts.
+       </li>
+       <li>
+        The control panel and ngrok tunnel enable easy, remote access to the entire system.
+       </li>
+      </ul>
+     </li>
+    </ol>
+    <h2>
+     4. Challenges Faced
+    </h2>
+        <div class="highlight">
+    <ol>
+     <li>
+      <strong>
+       Hardware Integration and Assembly
+      </strong>
+      <ul>
+       <li>
+        <strong>
+         Component Connections:
+        </strong>
+        Integrating the Raspberry Pi, camera module, and ultrasonic sensors required careful wiring on a breadboard. Ensuring that each sensor’s trigger and echo pins were correctly connected and testing multiple times to verify proper function was challenging.
+       </li>
+       <li>
+        <strong>
+         Sensor Calibration and Reliability:
+        </strong>
+        The ultrasonic sensors sometimes produced inconsistent readings. This necessitated calibration and adjustments in the code to handle timeouts and out-of-range values reliably.
+       </li>
+       <li>
+        <strong>
+         Physical Mounting:
+        </strong>
+        Finding a secure and optimal position for mounting the camera and sensors, along with considerations for an enclosure, was a hands-on challenge that impacted the overall detection accuracy.
+       </li>
+      </ul>
+     </li>
+     <li>
+      <strong>
+       Software-Hardware Synchronization
+      </strong>
+      <ul>
+       <li>
+        <strong>
+         Real-Time Data Processing:
+        </strong>
+        Combining live video capture and sensor data processing with the Flask server’s operations created timing challenges. Managing global variables and thread synchronization to ensure that detection tasks did not interfere with the web server required careful design.
+       </li>
+       <li>
+        <strong>
+         Resource Constraints:
+        </strong>
+        The Raspberry Pi’s limited processing power sometimes led to performance bottlenecks when running hardware-intensive operations alongside the web server and logging functions.
+       </li>
+      </ul>
+     </li>
+     <li>
+      <strong>
+       Firebase Firestore Integration
+      </strong>
+      <ul>
+       <li>
+        <strong>
+         Authentication and Configuration:
+        </strong>
+        Setting up the Firebase Admin SDK and correctly configuring the service account credentials was non-trivial. Ensuring the JSON key was in the correct format and had proper permissions posed initial challenges.
+       </li>
+       <li>
+        <strong>
+         Data Logging Consistency:
+        </strong>
+        Integrating remote logging to reliably push every detection event to Firestore required debugging and testing. Tackled issues such as network timeouts and data serialization were resolved, ensuring data integrity.
+       </li>
+      </ul>
+     </li>
+     <li>
+      <strong>
+       Remote Access Configuration with Ngrok
+      </strong>
+      <ul>
+       <li>
+        <strong>
+         Tunnel Stability and URL Management:
+        </strong>
+        While ngrok provided a fast solution for remote access, managing temporary URLs (which change with each session) was a challenge. This makes persistent access difficult without a paid plan.
+       </li>
+       <li>
+        <strong>
+         Security Considerations:
+        </strong>
+        Exposing endpoints to the public internet via ngrok required extra caution to balance accessibility with security measures.
+       </li>
+      </ul>
+     </li>
+     <li>
+      <strong>
+       User Interface (Control Panel) Development
+      </strong>
+      <ul>
+       <li>
+        <strong>
+         Integrating Multiple Endpoints:
+        </strong>
+        Developing a unified control panel to manage various endpoints (start, stop, status, config, detect, speak) was challenging. Writing robust JavaScript to handle GET and POST requests and ensuring clear, responsive feedback demanded multiple iterations.
+       </li>
+       <li>
+        <strong>
+         Responsive Feedback:
+        </strong>
+        Providing immediate and accurate responses via the control panel (such as alerts for successful commands or error messages) required careful design and testing to enhance the user experience.
+       </li>
+      </ul>
+     </li>
+    </ol>
+   </div>
+  </div>
+   <a class="btn" href="index.html">
+    ← Back to Portfolio
+   </a>
+  </div>
+  <link href="style.css" rel="stylesheet"/>
+ </body>
 </html>
