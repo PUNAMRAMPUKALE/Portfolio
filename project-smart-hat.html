@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Hat Project | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1c1c1c;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+    h1, h2, h3 {
+      color: #003366;
+      margin-top: 1.5rem;
+    }
+    .highlight {
+      background-color: #f0f8ff;
+      padding: 1rem;
+      border-left: 5px solid #003366;
+      margin: 1.5rem 0;
+    }
+    img, video {
+      max-width: 100%;
+      margin-top: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    a {
+      color: #003366;
+      text-decoration: underline;
+    }
+    .btn {
+      display: inline-block;
+      background: #003366;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 2rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .gallery img {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="animate__animated animate__fadeInDown">AI-Powered Smart Hat for Visually Impaired Navigation</h1>
+    <img src="assets/images/smart-hat.jpg" alt="Smart Hat project screenshot" class="animate__animated animate__fadeInUp" />
+    <video controls poster="assets/images/smart-hat.jpg">
+      <source src="assets/videos/smart-hat-demo-1.mp4" type="video/mp4">
+    </video>
+    <video controls poster="assets/images/smart-hat.jpg">
+      <source src="assets/videos/smart-hat-demo-2.mp4" type="video/mp4">
+    </video>
+    <div class="gallery">
+      <img src="assets/images/smart-hat-1.jpg" alt="Screenshot 1">
+      <img src="assets/images/smart-hat-2.jpg" alt="Screenshot 2">
+      <img src="assets/images/smart-hat-3.jpg" alt="Screenshot 3">
+      <img src="assets/images/smart-hat-4.jpg" alt="Screenshot 4">
+      <img src="assets/images/smart-hat-5.jpg" alt="Screenshot 5">
+      <img src="assets/images/smart-hat-6.jpg" alt="Screenshot 6">
+    </div>
+
+    <h2>Challenge</h2>
+    <div class="highlight">
+      How can we empower visually impaired individuals with a wearable solution that provides 360-degree obstacle awareness in real time without the use of hands?
+    </div>
+
+    <h2>Solution</h2>
+    <p>
+      We developed a smart wearable hat equipped with an AI-powered object detection camera, ultrasonic sensors, and a low-light infrared module. It seamlessly connects with a mobile/web interface and provides intuitive guidance through audio cues. Technologies like Google Maps GIS, BLE, and IMU sensors further enhance the experience.
+    </p>
+
+    <h2>Project Flow</h2>
+    <ol>
+      <li>Research & Requirement Gathering</li>
+      <li>Prototyping with Arduino, Raspberry Pi</li>
+      <li>Integrating TensorFlow Lite for object recognition</li>
+      <li>Backend integration for data tracking (Node.js, Firebase)</li>
+      <li>Frontend interface (React, Flutter)</li>
+      <li>User testing & iterations</li>
+    </ol>
+
+    <a href="index.html" class="btn">← Back to Portfolio</a>
+  </div>
+</body>
+</html>
