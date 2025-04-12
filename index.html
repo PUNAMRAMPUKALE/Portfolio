@@ -27,6 +27,103 @@
         transition: all 0.3s ease-in-out;
       }
 
+      /* About Me Section */
+.about-me-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.about-me {
+  flex: 1 1 50%;
+  max-width: 550px;
+}
+
+.about-me h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2e7d32;
+}
+
+.about-me p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.photo-frame {
+  position: relative;
+  width: 350px;
+  height: 800px;
+  flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo {
+  position: absolute;
+  width: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease-in-out;
+  border: 5px solid transparent;
+}
+
+.photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 30px;
+}
+
+.photo:first-child {
+  bottom: 0;
+  left: 0;
+  transform: rotate(1deg);
+}
+
+.photo:last-child {
+  top: 0;
+  left: 20%;
+  z-index: 2;
+}
+
+.photo:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  z-index: 3;
+}
+
+@media (max-width: 768px) {
+  .about-me-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .photo-frame {
+    width: 100%;
+    height: auto;
+  }
+
+  .photo {
+    position: static;
+    margin-bottom: -20px;
+  }
+
+  .photo:hover {
+    transform: scale(1.03);
+  }
+}
+
       nav {
         display: flex;
         justify-content: space-between;
@@ -319,9 +416,29 @@
   <header class="section__container glass-frosted">
     <h1>Punam Ram Pukale</h1>
     <h2>Senior Software Developer</h2>
-    <p class="section__subtitle">Building scalable, secure, and impactful digital experiences.</p>
+    <p class="section__subtitle">Crafting code that tells stories, solves challenges, and empowers users—turning ideas into impactful innovations.</p>
   </header>
-
+  <section class="section__container">
+    <div class="about-me-wrapper">
+      <!-- About Me Content -->
+      <div class="about-me">
+        <h1>👋🏼 About Me</h1>
+        <p>Hey there! I’m <strong>Punam</strong>, a curious coder, passionate builder, and someone who genuinely believes that great software is built not just with logic, but with heart. With over six years of experience in the tech industry — and now pursuing my Master’s in Computer Science at the University of the Pacific — I’ve worked across roles that blend creativity, security, and real-world impact.</p>
+        <p>When I’m not writing code or tinkering with the latest tech, you’ll probably find me dancing (yes, even in the kitchen!), hiking up a trail, or exploring new spots with friends. I’m all about trying different cuisines, vibing to good music, and soaking in the energy of new places and cultures. Whether it’s a quiet walk or a spontaneous road trip — I’m in!</p>
+        <p>I love working with teams that are collaborative, open to ideas, and eager to build something meaningful. Tech aside, I believe balance, laughter, and human connection are just as important in life — and in work.</p>
+        <p>Let’s connect if you feel the same, or just want to talk tech, travel, or tacos 🌮✨</p>
+      </div>
+  
+      <!-- About Me Image Frame -->
+      <div class="photo-frame">
+        
+        <div class="photo">
+          <img src="assets/images/profilephotonew.jpg" alt="Mountain Reflection">
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <section class="section__container">
   <h2 class="section__title">Projects</h2>
   <p class="section__subtitle">Featured works showcasing my capabilities and problem-solving skills.</p>
