@@ -392,6 +392,18 @@
     z-index: 1;
     opacity: 0.2;
   }
+  .contact-link {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.contact-link:hover {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
 </style>
 <script>
   // Natural Tilt Interaction
@@ -438,7 +450,40 @@
       </div>
     </div>
   </section>
+  <section class="section__container">
+    <h2 class="section__title">🏆 Achievements</h2>
+    <p class="section__subtitle">Highlighting milestones that reflect my passion, innovation, and dedication to real-world impact.</p>
+  <!-- Achievement 1: Hackathon -->
+    <div class="project__card" data-tilt>
+      <h3>First Prize – 2025 Global AI Hackathon at MIT</h3>
+      <p>I’m incredibly proud to share that I was awarded <strong>First Prize</strong> at the 2025 Global AI Hackathon held at the Massachusetts Institute of Technology (MIT). Competing alongside brilliant minds from 86 countries, our solution stood out among over 1,300 participants. 🌐</p>
+      <p>As a lead contributor, I collaborated with my team to design and develop an <strong>IoT-powered AI solution</strong> focused on solving real-world challenges aligned with the <strong>UN Sustainable Development Goals (SDGs)</strong>. It was a powerful reminder of how technology can truly drive global good.</p>
+      <ul>
+        <li>✅ Led integration of AI & IoT systems</li>
+        <li>✅ Designed for real-world scalability and impact</li>
+        <li>✅ Worked in a diverse, globally distributed team</li>
+      </ul>
+      <p>🎥 <a href="https://lnkd.in/gvrVYqD6" target="_blank">Watch our project demo on YouTube</a></p>
   
+      <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+        <img src="assets/images/Winner.jpg" alt="Hackathon Image 1"
+             style="width: 80%; max-width: 500px; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.1);" />
+      </div>
+    </div>
+
+<!-- Achievement 2: Research Paper -->
+<div class="project__card" data-tilt style="margin-top: 2rem;">
+  <h3>Research Publication – AIIoT 2025</h3>
+  <p>I'm honored to be the <strong>First Author</strong> of the research paper titled <em>“An Intelligent IoT Navigation System for Visually Impaired Individuals: Design and Implementation”</em>, accepted at the prestigious <strong>AIIoT 2025</strong> Conference (Paper ID: <strong>#1571136045</strong>).</p>
+  <p>This work presents our innovative approach to assistive navigation using AI and IoT technologies to support visually impaired individuals in navigating real-world environments.</p>
+  <ul>
+    <li>✅ First-author contribution in concept, design, and evaluation</li>
+    <li>✅ Focused on accessibility, inclusivity, and real-world deployment</li>
+    <li>✅ Accepted for presentation at an international AI + IoT conference</li>
+  </ul>
+  <p><strong> I’ll be presenting this paper in Seattle on May 30th, 2025 at the AIIoT 2025 Conference.</strong></p>
+</div>
+  </section>
   <section class="section__container">
   <h2 class="section__title">Projects</h2>
   <p class="section__subtitle">Featured works showcasing my capabilities and problem-solving skills.</p>
@@ -485,167 +530,11 @@ The smart hat offers a lightweight, hands-free, and adjustable design, deliverin
       <div>
         <h3>Contact</h3>
         <p>Email: punampukale@gmail.com</p>
-        <p>GitHub: https://github.com/PUNAMRAMPUKALE</p>
-        <p>LinkedIn: https://www.linkedin.com/in/punam-pukale-a8bb83ba/</p>
-      </div>
+        <p>GitHub: <a href="https://github.com/PUNAMRAMPUKALE" class="contact-link" target="_blank">PUNAMRAMPUKALE</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/punam-pukale-a8bb83ba/" class="contact-link" target="_blank">Punam Pukale</a></p>
+      </div>      
     </div>
     <div class="footer__bar">© 2025 Punam Pukale. All rights reserved.</div>
   </footer>
-
-<section class="section__container">
-  <h2 class="section__title">Let's Talk</h2>
-  <p class="section__subtitle">Start a conversation using the form below.</p>
-  <div class="glass" style="max-width: 600px; margin: auto; padding: 2rem;">
-    <form id="chat-form" style="display: flex; flex-direction: column; gap: 1rem;">
-      <label for="chat-name">Name</label>
-      <input id="chat-name" type="text" placeholder="Your name" required style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
-
-      <label for="chat-email">Email</label>
-      <input id="chat-email" type="email" placeholder="your@email.com" required style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
-
-      <label for="chat-message">Message</label>
-      <textarea id="chat-message" rows="4" placeholder="Say hi or ask me anything..." required style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;"></textarea>
-
-      <button class="btn" type="submit">Send</button>
-    </form>
-    <div id="chat-response" style="margin-top: 1rem; color: var(--highlight); font-weight: 600;"></div>
-  </div>
-</section>
-<script>
-  document.getElementById('chat-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = document.getElementById('chat-name').value;
-    const message = document.getElementById('chat-message').value;
-    document.getElementById('chat-response').innerText = `Thanks ${name}, I’ll get back to you soon!`;
-    this.reset();
-  });
-</script>
-
-  <svg style="position: fixed; top: -50px; left: -50px; z-index: -1; opacity: 0.05;" width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="250" cy="250" r="200" fill="var(--accent)" />
-  </svg>
-  <svg style="position: fixed; bottom: -60px; right: -60px; z-index: -1; opacity: 0.05;" width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="400" rx="200" fill="var(--highlight)" />
-  </svg>
-<div class="chatbot">
-  <div class="chatbot-header">Ask Me Anything</div>
-  <div class="chatbot-messages" id="chatMessages">
-    <div><strong>Bot:</strong> Hi! How can I help you today?</div>
-  </div>
-  <div class="chatbot-input">
-    <input type="text" id="chatInput" placeholder="Type a message..." />
-    <button onclick="sendMessage()">Send</button>
-  </div>
-</div>
-
-<style>
-  .chatbot {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 300px;
-    max-height: 400px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    font-size: 14px;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    z-index: 999;
-  }
-  .chatbot-header {
-    background: var(--accent);
-    color: white;
-    padding: 1rem;
-    font-weight: bold;
-  }
-  .chatbot-messages {
-    flex: 1;
-    padding: 1rem;
-    overflow-y: auto;
-  }
-  .chatbot-input {
-    display: flex;
-    border-top: 1px solid #ccc;
-  }
-  .chatbot-input input {
-    flex: 1;
-    border: none;
-    padding: 0.75rem;
-  }
-  .chatbot-input button {
-    background: var(--highlight);
-    color: white;
-    border: none;
-    padding: 0 1rem;
-    cursor: pointer;
-  }
-</style>
-
-<script>
-  function sendMessage() {
-    const input = document.getElementById('chatInput');
-    const messages = document.getElementById('chatMessages');
-    const msg = input.value.trim();
-    if (msg === '') return;
-
-    const userDiv = document.createElement('div');
-    userDiv.innerHTML = '<strong>You:</strong> ' + msg;
-    messages.appendChild(userDiv);
-
-    const botDiv = document.createElement('div');
-    botDiv.innerHTML = '<strong>Bot:</strong> ' + getReply(msg);
-    messages.appendChild(botDiv);
-
-    input.value = '';
-    messages.scrollTop = messages.scrollHeight;
-  }
-
-  function getReply(msg) {
-    const m = msg.toLowerCase();
-    if (m.includes('hello') || m.includes('hi')) return 'Hello! 👋';
-    if (m.includes('project')) return 'Check out my resume parser or chat app!';
-    if (m.includes('skills')) return 'React, Python, Node.js, Docker, and more.';
-    if (m.includes('email')) return 'Sure! You can reach me at punampukale@gmail.com';
-    return "That's interesting! 😊";
-  }
-</script>
-
-
-<div class="chatbot" id="chatbotBox" style="display: none;">
-  <div class="chatbot-header">Ask Me Anything <span onclick="toggleChatbot()" style="float:right; cursor:pointer;">&times;</span></div>
-  <div class="chatbot-messages" id="chatMessages">
-    <div><strong>Bot:</strong> Hi! How can I help you today?</div>
-  </div>
-  <div class="chatbot-input">
-    <input type="text" id="chatInput" placeholder="Type a message..." />
-    <button onclick="sendMessage()">Send</button>
-  </div>
-</div>
-
-<style>
-  .chatbot-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: var(--accent);
-    color: white;
-    font-size: 24px;
-    padding: 0.5rem 0.75rem;
-    border: none;
-    border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    cursor: pointer;
-    z-index: 1000;
-  }
-</style>
-
-<script>
-  function toggleChatbot() {
-    const chatbot = document.getElementById('chatbotBox');
-    chatbot.style.display = chatbot.style.display === 'none' ? 'flex' : 'none';
-  }
-</script>
 </body>
 </html>
