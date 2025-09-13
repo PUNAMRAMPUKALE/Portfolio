@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NoteSphere – Distributed Notes Platform</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>
+  <link href="style.css" rel="stylesheet"/>
+  <style>
+    .container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      font-family: sans-serif;
+    }
+    .highlight {
+      background: #f9f9f9;
+      padding: 1rem;
+      border-left: 4px solid #444;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      background: var(--accent);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--highlight);
+      transform: scale(1.05);
+    }
+    ul { line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>NoteSphere – Distributed Notes Platform</h1>
+    <a class="btn" href="https://github.com/PUNAMRAMPUKALE/notesphere">GitHub Repository</a>
+
+    <h2>Project Overview</h2>
+    <p>NoteSphere is a TypeScript-first distributed notes platform with modular service architecture and a containerized setup for reproducible builds and deployments. Designed for scalability and developer productivity, it uses Docker and an infrastructure scaffold to keep code, environment, and deployments consistent.</p>
+
+    <h2>Features</h2>
+    <ul>
+      <li><strong>Service-oriented layout:</strong> Modular <code>services/</code> workspace for auth, notes, and API services.</li>
+      <li><strong>Containerized dev & prod:</strong> <code>docker/</code> directory with images/compose for consistent environments.</li>
+      <li><strong>Infrastructure scaffold:</strong> Dedicated <code>infra/</code> folder for IaC and deployment configs.</li>
+      <li><strong>TypeScript everywhere:</strong> ~98% TypeScript for shared types and safer refactors.</li>
+      <li><strong>Dockerfiles included:</strong> Ensures reproducible builds and easy CI/CD integration.</li>
+    </ul>
+
+    <h2>Platform Capabilities</h2>
+    <ul>
+      <li>Modular micro-services for independent deploys and scaling.</li>
+      <li>12-factor friendly design with environment-based config.</li>
+      <li>Infrastructure separation enabling reproducible environments.</li>
+    </ul>
+
+    <h2>Future Roadmap</h2>
+    <ul>
+      <li>API Gateway with JWT auth, rate-limiting, and tracing.</li>
+      <li>Observability: structured logs, Prometheus metrics, OpenTelemetry tracing.</li>
+      <li>Notes CRUD with tagging, soft-delete, and full-text search.</li>
+      <li>Automated CI/CD with integration tests and security hardening.</li>
+    </ul>
+
+    <a class="btn" href="index.html">← Back to Portfolio</a>
+  </div>
+</body>
+</html>
