@@ -3,72 +3,45 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Career Catalyst Project | Portfolio</title>
+  <title>Interview Automation Platform | Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>
   <link href="style.css" rel="stylesheet"/>
 
   <style>
-    .container {
-      padding: 20px;
-      max-width: 1400px;
-      margin: 0 auto;
-      font-family: sans-serif;
-    }
-
-    .btn {
-      display: inline-block;
-      margin: 10px 0;
-      padding: 10px 20px;
-      background: #222;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-
-    .highlight {
-      background: #f9f9f9;
-      padding: 1rem;
-      border-left: 4px solid #444;
-      margin-bottom: 2rem;
-    }
-
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-
-    .image-card {
-      flex: 1 1 calc(50% - 30px);
-      max-width: calc(50% - 30px);
-    }
-
-    .image-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      display: block;
-    }
-
-    @media (max-width: 768px) {
-      .image-card {
-        flex: 1 1 100%;
-        max-width: 100%;
-      }
-    }
+    .container { padding: 20px; max-width: 1400px; margin: 0 auto; font-family: sans-serif; }
+    .btn { display: inline-block; margin: 10px 0; padding: 10px 20px; background: #222; color: #fff; text-decoration: none; border-radius: 5px; }
+    .highlight { background: #f9f9f9; padding: 1rem; border-left: 4px solid #444; margin-bottom: 2rem; }
+    .gallery { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 2rem; }
+    .image-card { flex: 1 1 calc(50% - 30px); max-width: calc(50% - 30px); }
+    .image-card img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); display: block; }
+    @media (max-width: 768px) { .image-card { flex: 1 1 100%; max-width: 100%; } }
+    h2 { margin-top: 2.25rem; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Career Catalyst – AI-Powered Career Development Platform</h1>
-    <a class="btn" href="https://github.com/PUNAMRAMPUKALE/AIProject">GitHub Code</a>
+    <h1>Interview Automation Platform – Student Career Readiness</h1>
+    <a class="btn" href="https://github.com/PUNAMRAMPUKALE/interview-automation-platform">GitHub Code</a>
 
-    <h2>Project Overview</h2>
-    <p>Career Catalyst is a unified platform that empowers job seekers with tools like industry dashboards, AI resume builders, mock interview practice, and personalized cover letters. Built using Next.js and ChatCNUI, the app delivers a modern UI experience with interactive features and real-time updates.</p>
+<p>
+  The Interview Automation Platform is a full-stack application built with <strong>Next.js</strong> that streamlines 
+  technical hiring by automating candidate evaluation workflows. It integrates modern UI/UX components, secure authentication, 
+  background job handling, and database-driven API routes to provide a smooth interview management experience.  
+  Key features include <strong>AI-driven candidate tracking</strong>, <strong>automated scheduling and scoring</strong>, 
+  and a responsive admin dashboard built using <strong>Shadcn/UI</strong> with dark mode support via 
+  <strong>next-themes</strong>. User authentication is powered by <strong>Clerk</strong>, while 
+  <strong>Prisma</strong> manages ORM and data migrations over a <strong>PostgreSQL</strong> database. 
+  Background task automation like async scoring, notifications, and analytics is handled using <strong>Inngest</strong>.  
+  <br/><br/>
+  The platform is built on a modular Next.js architecture with server actions, Zod + React Hook Form validation, 
+  and API routes for secure data exchange. With a modern, accessible design and cloud-ready backend, it simplifies 
+  the interview process for HR teams and hiring managers alike.  
+  <br/><br/>
+  <strong>Technologies Used:</strong> Next.js, Tailwind CSS, Shadcn/UI, Clerk (Auth), Prisma, PostgreSQL, 
+  Inngest (Background Jobs), Zod, React Hook Form, Next Themes.
+</p>
+
 
     <div class="gallery">
       <div class="image-card">
@@ -78,54 +51,62 @@
         <img src="assets/images/loginwithemail.png" alt="Screenshot 2">
       </div>
       <div class="image-card">
-        <img src="assets/images/AIcoach.png" alt="Screenshot 3">
+        <img src="assets/images/resume-builder.png" alt="Screenshot 3">
       </div>
       <div class="image-card">
-        <img src="assets/images/login_success.png" alt="Screenshot 4">
+        <img src="assets/images/resume -ready.png" alt="Screenshot 4">
       </div>
       <div class="image-card">
-        <img src="assets/images/Reviews.png" alt="Screenshot 5">
+        <img src="assets/images/mock-interview.png" alt="Screenshot 5">
+      </div>
+            <div class="image-card">
+        <img src="assets/images/cover-letter.png" alt="Screenshot 5">
       </div>
     </div>
 
-    <h2>Importance of Project</h2>
+    <h2>Why It Matters (for Students)</h2>
     <div class="highlight">
       <ul>
-        <li><strong>Why it matters:</strong> The job market is competitive and fast-changing, demanding smarter preparation tools.</li>
-        <li><strong>Who it helps:</strong> Freshers, professionals, and career switchers.</li>
-        <li><strong>Current struggle:</strong> Manual preparation with static resources.</li>
-        <li><strong>Alternatives:</strong> Zety, Resume.io, LinkedIn—but lack full integration and AI depth.</li>
+        <li><strong>All-in-one prep:</strong> Build ATS-ready resumes, take timed tests, and get quantified feedback in one place.</li>
+        <li><strong>Measurable progress:</strong> Track scores, skills, and completion history with a clear performance dashboard.</li>
+        <li><strong>Confidence boost:</strong> Practice interview-style quizzes and review analytics before real assessments.</li>
       </ul>
     </div>
 
-    <h2>Research & Insights</h2>
-    <p>Competitive analysis revealed fragmented tools across platforms. Users wanted a central solution. We benchmarked resume builders, mock interview apps, and market trend tools to design our integrated solution.</p>
-
-    <h2>Ideation and Process</h2>
-    <p>Initially resume-focused, user interviews revealed broader needs. We pivoted to a complete toolkit. References like LinkedIn’s UI and scroll animations from <a href="https://www.youtube.com/watch?v=UbXpRv5ApKA">this tutorial</a> shaped our visual experience. We tackled performance issues, personalized user flows, and made AI outputs editable for trust and transparency.</p>
-
-    <h2>Design Execution</h2>
+    <h2>Key Features</h2>
     <ul>
-      <li><strong>Tools Used:</strong> Next.js, Tailwind CSS, ChatCNUI, OpenAI API, Inngest, Clerk, Postgres Database</li>
-      <li><strong>Key Components:</strong> Interactive dashboards, mock interview simulator, resume and cover letter generator</li>
-    </ul>
-    <p><strong>My Learnings:</strong></p>
-    <ul>
-      <li><strong>Curiosity:</strong> User problems informed every design decision</li>
-      <li><strong>Clarity:</strong> Defined user stories for each module</li>
-      <li><strong>Iteration:</strong> Weekly feedback improved UI simplicity and performance clarity</li>
+      <li><strong>Resume Builder:</strong> Editable sections, export-ready content, ATS-oriented layout.</li>
+      <li><strong>Tests &amp; Quizzes:</strong> Topic-wise practice, timers, result summaries, and retake flow.</li>
+      <li><strong>Evaluation &amp; Feedback:</strong> Skill/knowledge scoring, error breakdowns, and improvement tips.</li>
+      <li><strong>Performance Dashboard:</strong> Historical scores, streaks, and progress indicators for goal tracking.</li>
+      <li><strong>Secure Auth:</strong> Student accounts with Clerk; protected routes for coursework and results.</li>
     </ul>
 
-    <h2>Usability Testing & Validation</h2>
-    <p>10 beta users tested the MVP. Feedback drove feature refinement (e.g., dashboard filtering, resume copy tone adjustment). Result: increased engagement and confidence in tools.</p>
+<h2>Architecture & Stack</h2>
+<ul>
+  <li><strong>Frontend:</strong> Next.js (App Router), Tailwind CSS, Shadcn/UI components such as buttons, badges, dialogs, dropdown menus, inputs, labels, progress bars, selects, tabs, and textareas.</li>
+  <li><strong>Theming:</strong> Implemented light/dark mode using <code>next-themes</code>.</li>
+  <li><strong>Authentication:</strong> Handled with <code>@clerk/nextjs</code> and <code>@clerk/theme</code> for secure user sign-in and consistent design.</li>
+  <li><strong>Background Jobs:</strong> Managed using Inngest with a local dev server at <code>http://localhost:8288</code> (via <code>npx inngest-cli@latest dev</code>).</li>
+  <li><strong>Database/ORM:</strong> PostgreSQL integrated through Prisma for schema definition, generation, and migrations (<code>prisma migrate dev</code>).</li>
+  <li><strong>Forms & Validation:</strong> Built with React Hook Form, Zod, and <code>@hookform/resolvers</code> for strong type safety and smooth validation.</li>
+</ul>
 
-    <h2>Reflection and Takeaways</h2>
+
+    <h2>Developer Notes</h2>
     <div class="highlight">
-      <p><strong>Problems Identified:</strong> Users unaware of ATS filters → We added scoring. Cover letters felt robotic → We added tone styles.</p>
-      <p><strong>What Worked:</strong> Unified platform, personalized content, dynamic UI.</p>
-      <p><strong>What Didn’t:</strong> Early dashboard clutter → resolved with filters.</p>
-      <p><strong>Key Takeaway:</strong> Users want integrated, AI-powered, customizable tools—not isolated features.</p>
+      <p>
+        <strong>Local setup:</strong> <code>npm run dev</code>, add <code>DATABASE_URL</code>, install Shadcn/UI components, enable dark theme with
+        <code>next-themes</code>, configure Clerk for auth, run Inngest dev server for background tasks, and manage DB schema via Prisma
+        migrations—per the repository’s README instructions.
+      </p>
     </div>
+
+    <h2>Outcomes</h2>
+    <p>
+      Students use the platform to create hiring-ready resumes, practice with quizzes, and monitor improvement across terms.
+      Users can review progress trends, helping students focus on the skills that matter most.
+    </p>
 
     <a class="btn" href="index.html">← Back to Portfolio</a>
   </div>

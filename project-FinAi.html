@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinAI Project | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>
+  <link href="style.css" rel="stylesheet"/>
+
+  <style>
+    .container {
+      padding: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      font-family: sans-serif;
+    }
+    .btn {
+      display: inline-block;
+      margin: 10px 0;
+      padding: 10px 20px;
+      background: #222;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .highlight {
+      background: #f9f9f9;
+      padding: 1rem;
+      border-left: 4px solid #444;
+      margin-bottom: 2rem;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .image-card {
+      flex: 1 1 calc(50% - 30px);
+      max-width: calc(50% - 30px);
+    }
+    .image-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .image-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+    /* Optional subtle section spacing */
+    h2 { margin-top: 2.25rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>FinAI – AI-Powered Investor–Startup Matching & Advisory</h1>
+    <a class="btn" href="https://github.com/PUNAMRAMPUKALE/finai">GitHub Code</a>
+
+    <h2>Project Overview</h2>
+    <h3>FinAI – Investor & Startup Intelligence Platform</h3>
+<p>
+  FinAI is an AI-powered investment matching and advisory platform that intelligently connects startups, investors, 
+  and financial products using large language models (LLMs), vector search, and graph analytics. It simplifies 
+  fundraising and deal sourcing by providing explainable, data-driven recommendations rather than black-box outputs. 
+  The platform ingests pitch decks, investor theses, and product catalogs, transforms them into semantic embeddings, 
+  and enables precise, constraint-aware matchmaking based on goals, stage, geography, and check size.
+  FinAI’s recommendation engine combines retrieval-augmented generation (RAG), cross-encoder reranking, and strict 
+  JSON validation for consistent and transparent results. Founders can upload materials to discover thesis-fit investors 
+  with clear “why” explanations, while investors can surface startups aligned with their sector and stage focus. 
+  A CrewAI-powered advisory mode orchestrates multiple AI agents for in-depth research, portfolio insights, and 
+  partnership strategies.
+  Built with React, Tailwind, FastAPI, Weaviate, and Neo4j, FinAI delivers a polished, responsive experience with 
+  interactive dashboards, filters, and visual relationship graphs. By unifying intelligence, explainability, and 
+  automation, FinAI empowers founders and investors to make faster, smarter, and more confident funding decisions.
+</p>
+
+
+    <!-- <div class="gallery">
+      <div class="image-card">
+        <img src="assets/images/finai-login.png" alt="FinAI – Login screen">
+      </div>
+      <div class="image-card">
+        <img src="assets/images/finai-dashboard.png" alt="FinAI – Dashboard with matches and filters">
+      </div>
+      <div class="image-card">
+        <img src="assets/images/finai-insights.png" alt="FinAI – RAG Insights view">
+      </div>
+      <div class="image-card">
+        <img src="assets/images/finai-recommend.png" alt="FinAI – LLM-based matches with explanations">
+      </div>
+      <div class="image-card">
+        <img src="assets/images/finai-graph.png" alt="FinAI – Knowledge graph relationships">
+      </div>
+    </div> -->
+
+    <h2>Importance of Project</h2>
+    <div class="highlight">
+      <ul>
+        <li><strong>Why it matters:</strong> Fundraising is noisy and slow; founders struggle to find true thesis-fit investors and warm paths.</li>
+        <li><strong>Who it helps:</strong> Founders, investors, and platform/accelerator teams running deal flow.</li>
+        <li><strong>Current struggle:</strong> Manual research across scattered docs, cold outreach, and generic shortlists.</li>
+        <li><strong>Alternatives:</strong> Crunchbase, PitchBook, Affinity—great data, but limited AI-native, end-to-end matching and explainable rankings.</li>
+      </ul>
+    </div>
+
+    <h2>Research & Insights</h2>
+    <p>
+      Interviews with founders and platform teams revealed the need for <em>explainable</em> matching (not a black box),
+      reliable constraint handling (stage/geo/check size), and reusable research context. We benchmarked retrieval and reranking
+      (bi-encoder + cross-encoder) and validated strict JSON LLM outputs for stable UI rendering.
+    </p>
+
+    <h2>Ideation and Process</h2>
+    <p>
+      We evolved from simple “profile → product” matching to a richer tri-entity design:
+      <strong>Startups ↔ Investors ↔ Financial Products</strong>. We added hard-constraint filtering (code-enforced),
+      cross-encoder reranking, and optional graph signals (co-investor proximity, sector overlap). The Crew flow chains RAG
+      research with the recommender, producing an advisor-style summary and next steps.
+    </p>
+
+    <h2>Architecture & Core Flows</h2>
+    <ul>
+      <li><strong>Layer 1 – Ingestion:</strong> <code>/ingest/startups</code>, <code>/ingest/investors</code>, <code>/ingest/products</code>, <code>/profiles</code> store canonical text + embeddings in Weaviate.</li>
+      <li><strong>Layer 2 – Intelligence:</strong> <code>/insights</code> (RAG Q&amp;A), <code>/match/investors</code> and <code>/match/startups</code> (candidate gen → constraints → cross-encoder → LLM JSON), <code>/crew/advice</code> (multi-agent).</li>
+      <li><strong>Layer 3 – Graph (optional):</strong> <code>/graph/sync</code>, <code>/graph/query</code> to build/query relationships in Neo4j.</li>
+    </ul>
+    <p><strong>Active Endpoints:</strong></p>
+    <div class="highlight">
+      <ol>
+        <li><strong>PDF/RAG:</strong> <code>POST /ingest</code>, <code>POST /insights</code></li>
+        <li><strong>Catalog:</strong> <code>POST /ingest/products</code></li>
+        <li><strong>Profiles:</strong> <code>POST /profiles</code></li>
+        <li><strong>Startup &amp; Investor Ingestion:</strong> <code>POST /ingest/startups</code>, <code>POST /ingest/investors</code></li>
+        <li><strong>Matching:</strong> <code>POST /match/investors</code>, <code>POST /match/startups</code></li>
+        <li><strong>Crew:</strong> <code>POST /crew/advice</code></li>
+        <li><strong>Graph:</strong> <code>POST /graph/sync</code>, <code>POST /graph/query</code> (optional)</li>
+      </ol>
+    </div>
+
+    <h2>Design Execution</h2>
+    <ul>
+      <li><strong>Tools & Stack:</strong> React (frontend), Tailwind + shadcn/ui, FastAPI/Express (API), Weaviate (vector DB), Neo4j (graph), Groq/OpenAI (LLMs), Crew orchestration, Postgres (ops metadata).</li>
+      <li><strong>Key Components:</strong> Match cards with “why” tooltips, strict-JSON explanation panel, filter chips (stage/geo/check), insights panel with citations, graph mini-map.</li>
+      <li><strong>Reliability:</strong> Temperature 0, schema validation for LLM JSON, hard constraints enforced in code, diversity by firm/geo.</li>
+    </ul>
+    <p><strong>My Learnings:</strong></p>
+    <ul>
+      <li><strong>Precision beats recall:</strong> Cross-encoder reranking + hard constraints drastically improve top-5 quality.</li>
+      <li><strong>Trust UX:</strong> Users value visible constraints and clear “why” explanations over opaque magic.</li>
+      <li><strong>Composable flows:</strong> RAG + Recommender + Graph + Crew provides an explainable advisory loop.</li>
+    </ul>
+
+    <h2>Usability Testing & Validation</h2>
+    <p>
+      With 12 pilot founders and 3 platform teams, we iterated on filters, card density, and JSON error handling.
+      Results: higher shortlist acceptance, fewer false matches, and faster outreach decisions. Offline evals used nDCG@10,
+      Precision@5, and constraint-violation rate.
+    </p>
+
+    <h2>Reflection and Takeaways</h2>
+    <div class="highlight">
+      <p><strong>Problems Identified:</strong> Black-box matches, constraint leakage, duplicate firms in top-N.</p>
+      <p><strong>What Worked:</strong> Two-stage ranking, schema-validated JSON, diversity rules, “why” explanations.</p>
+      <p><strong>What Didn’t (early):</strong> LLM-only ranking → inconsistent outputs; fixed via cross-encoder + validators.</p>
+      <p><strong>Key Takeaway:</strong> Accurate, explainable matches come from combining retrieval, constraints, reranking, and human-readable reasons.</p>
+    </div>
+
+    <a class="btn" href="index.html">← Back to Portfolio</a>
+  </div>
+</body>
+</html>
