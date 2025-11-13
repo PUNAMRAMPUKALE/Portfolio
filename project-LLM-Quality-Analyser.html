@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>LLM Response Quality Analyzer (LLM Lab) | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>
+    <link href="style.css" rel="stylesheet"/>
+
+    <style>
+      :root {
+        --bg-light: #ffffff;
+        --text-dark: #1c1c1c;
+        --accent: #003366; /* Oxford Blue */
+        --secondary-accent: #b38b6d; /* Camel */
+        --highlight: #556b2f; /* Dark Olive Green */
+        --glass: rgba(255, 255, 255, 0.75);
+        --glass-border: rgba(0, 0, 0, 0.08);
+      }
+
+      body {
+        font-family: 'Inter', 'Segoe UI', sans-serif;
+        background: var(--bg-light);
+        color: var(--text-dark);
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+
+      .container {
+        padding: 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      h1, h2, h3 {
+        color: var(--accent);
+        margin-top: 1.5rem;
+      }
+
+      p {
+        margin: 0.75rem 0;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+    .btn {
+      background: var(--accent);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--highlight);
+      transform: scale(1.05);
+    }
+
+      .highlight {
+        background: #f9f9f9;
+        padding: 1rem;
+        border-left: 4px solid #444;
+        margin-bottom: 2rem;
+      }
+
+      .tagline {
+        font-size: 1.05rem;
+        max-width: 780px;
+        margin-top: 0.5rem;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .meta-pill {
+        padding: 0.3rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(0, 51, 102, 0.05);
+        border: 1px solid rgba(0, 51, 102, 0.15);
+      }
+
+      .section-subtitle {
+        font-size: 0.95rem;
+        color: #4b5563;
+      }
+
+      .top-image {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .top-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 24px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+        border: 2px solid rgba(0, 51, 102, 0.1);
+        background: white;
+        padding: 6px;
+      }
+
+      ul, ol {
+        padding-left: 1.25rem;
+      }
+
+      li {
+        margin: 0.3rem 0;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        gap: 2rem;
+        margin-top: 1rem;
+      }
+
+      @media (max-width: 900px) {
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+      }
+
+      .pill {
+        padding: 0.25rem 0.7rem;
+        border-radius: 999px;
+        border: 1px solid rgba(0,0,0,0.08);
+        font-size: 0.8rem;
+        background: rgba(255,255,255,0.9);
+      }
+
+      .footer-links {
+        margin-top: 3rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      /* ---- IMAGE GALLERY (same pattern as Interview Automation page) ---- */
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .image-card {
+        flex: 1 1 calc(50% - 30px);
+        max-width: calc(50% - 30px);
+      }
+
+      .image-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .image-card {
+          flex: 1 1 100%;
+          max-width: 100%;
+        }
+      }
+
+      h2 { margin-top: 2.25rem; }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Header + Intro -->
+      <h1>LLM Response Quality Analyzer (LLM Lab)</h1>
+
+      <a class="btn" href="https://llm-model-analyzer-frontend.onrender.com/" target="_blank">
+        Live Web App
+      </a>
+      <a class="btn" href="https://github.com/your-user/llm-model-analyzer-frontend" target="_blank">
+        Frontend GitHub
+      </a>
+      <a class="btn" href="https://github.com/your-user/llm-model-analyzer-backend-api" target="_blank">
+        Backend GitHub
+      </a>
+
+      <p class="tagline">
+        A full-stack lab to run LLM parameter sweeps, stream responses in real time, and score each output
+        with deterministic quality metrics. It’s built so you can stop guessing which settings “feel better” and
+        start comparing experiments in a structured, measurable way.
+      </p>
+
+      <div class="meta-row">
+        <span class="meta-pill"><i class="ri-macbook-line"></i> Full-stack TypeScript</span>
+        <span class="meta-pill"><i class="ri-database-2-line"></i> Prisma + PostgreSQL</span>
+        <span class="meta-pill"><i class="ri-cpu-line"></i> Groq LLM API</span>
+        <span class="meta-pill"><i class="ri-broadcast-line"></i> Server-Sent Events (SSE)</span>
+        <span class="meta-pill"><i class="ri-cloud-line"></i> Docker + Render</span>
+      </div>
+
+      <!-- Optional hero image -->
+      <div class="top-image">
+        <img src="assets/images/llm-lab-dashboard.png" alt="LLM Lab Dashboard Screenshot"/>
+      </div>
+
+      <!-- 1. What the app does -->
+      <h2>1. What This Lab Does</h2>
+      <p>
+        The idea behind LLM Lab is simple: you give the system a prompt and a grid of parameters
+        (for example different <strong>temperature</strong> and <strong>top_p</strong> values), and it runs a structured
+        experiment for you. The backend expands those combinations, calls Groq’s LLM for each one,
+        computes a set of text-quality metrics, and stores everything in PostgreSQL.
+      </p>
+      <p>
+        On the frontend, you get a clean workflow:
+      </p>
+      <ul>
+        <li>Start from the <strong>Home page</strong> and define an experiment.</li>
+        <li>Watch it run live on the <strong>Experiment page</strong> with streaming updates.</li>
+        <li>Browse historical work in the <strong>All Experiments</strong> view.</li>
+        <li>Use the <strong>Export Center</strong> to download a unified CSV for deeper analysis.</li>
+        <li>Use the <strong>Docs page</strong> as a built-in explanation of parameters, metrics, and scoring logic.</li>
+      </ul>
+
+      <!-- 2. Frontend & UX Flow -->
+      <h2>2. Frontend & UX Flow</h2>
+
+      <div class="two-col">
+        <div>
+          <h3>2.1 Home – creating an experiment</h3>
+          <p>
+            The journey starts on the Home page. You enter a title, the user prompt, and choose the model
+            (for example <code>llama-3.3-70b-versatile</code>). Instead of hard-coding a single configuration,
+            the UI lets you supply ranges for parameters like temperature and top_p.
+          </p>
+          <p>
+            When you click <strong>Run Experiment</strong>, the frontend makes a POST request to
+            <code>/experiments</code> to create the experiment, then immediately calls
+            <code>/experiments/:id/run</code> to kick off execution and navigates you into the experiment page.
+          </p>
+
+          <h3>2.2 Experiment page – live run with SSE</h3>
+          <p>
+            The Experiment page focuses entirely on one experiment. The top section shows the prompt,
+            model, and parameter grid. Below that, new responses and metrics stream in as the backend works
+            through combinations.
+          </p>
+          <p>
+            The frontend opens an <code>EventSource</code> to <code>/runs/:runId/stream</code>. The backend
+            emits <code>progress</code>, <code>completed</code>, and <code>failed</code> events via Server-Sent Events.
+            Each event invalidates cached queries so the UI fetches fresh responses and metrics only when there’s
+            something new.
+          </p>
+          <p>
+            Once scoring is done, the UI highlights the <strong>best fit</strong> response based on the
+            <code>overallQuality</code> sent from the backend. From here you can export CSV or JSON for just
+            this experiment.
+          </p>
+        </div>
+
+        <div>
+          <h3>2.3 All Experiments – browsing history</h3>
+          <p>
+            The <strong>All Experiments</strong> tab is a separate page meant only for navigation. It calls
+            <code>GET /experiments</code> and renders one card per experiment with title, model, and created time.
+            Clicking a card takes you back to that experiment’s detail view.
+          </p>
+
+          <h3>2.4 Export Center – system-wide CSV</h3>
+          <p>
+            The <strong>Export Center</strong> aggregates data across all experiments. When you download the
+            unified CSV, the frontend:
+          </p>
+          <ul>
+            <li>Lists all experiments via <code>GET /experiments</code>.</li>
+            <li>Paginates through <code>/experiments/:id/responses</code> and <code>/experiments/:id/metrics</code>.</li>
+            <li>Joins prompts, parameters, metrics, and best-fit flags into a single CSV.</li>
+          </ul>
+          <p>
+            The file is generated on the client and saved directly from the browser so you can open it in
+            Excel, Sheets, or any BI tool.
+          </p>
+
+          <h3>2.5 Docs – built-in explanation</h3>
+          <p>
+            The Docs page is a simple client-side reference explaining how parameters like
+            temperature and top_p affect outputs, what each metric represents, and how the best response
+            is chosen. It lets someone understand the scoring logic without opening the code.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3. Architecture -->
+      <h2>3. System Architecture</h2>
+      <p class="section-subtitle">
+        The system is split into a Next.js frontend and a Node.js backend, with PostgreSQL underneath.
+        Everything is wired through REST endpoints and a single SSE stream for live updates.
+      </p>
+
+      <div class="two-col">
+        <div>
+          <h3>3.1 Frontend</h3>
+          <ul>
+            <li>Next.js App Router with React and TypeScript.</li>
+            <li>React Query (TanStack Query) for data fetching and caching.</li>
+            <li>Tailwind-style utility classes for layout and components.</li>
+            <li>Client-side CSV/JSON generation for exports.</li>
+            <li>API base configured through <code>NEXT_PUBLIC_API_BASE</code>.</li>
+          </ul>
+          <div class="pill-list">
+            <span class="pill">Next.js</span>
+            <span class="pill">React Query</span>
+            <span class="pill">Tailwind-style CSS</span>
+            <span class="pill">Client-side CSV</span>
+          </div>
+        </div>
+
+        <div>
+          <h3>3.2 Backend</h3>
+          <ul>
+            <li>Node.js + Express with TypeScript.</li>
+            <li>Prisma ORM over PostgreSQL for experiments, runs, responses, and metrics.</li>
+            <li>Custom <code>MetricsClient</code> that computes scores inside Node.</li>
+            <li>Groq provider for LLM completions using <code>GROQ_API_KEY</code>.</li>
+            <li>Internal <code>EventBus</code> for events like <code>run.started</code>, <code>response.generated</code>, <code>metrics.computed</code>, and <code>run.completed</code>.</li>
+            <li>CORS configured with <code>FRONTEND_ORIGIN</code> for dev and production.</li>
+          </ul>
+          <div class="pill-list">
+            <span class="pill">Express.js</span>
+            <span class="pill">Prisma + PostgreSQL</span>
+            <span class="pill">Groq LLM API</span>
+            <span class="pill">SSE</span>
+            <span class="pill">Docker / Render</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Metrics Engine -->
+      <h2>4. Metrics Engine & Best-Fit Selection</h2>
+      <p>
+        The metrics engine is deterministic and lives entirely in the backend. For each response, it:
+      </p>
+      <ul>
+        <li>Extracts content words from the user prompt and checks how many are covered in the answer.</li>
+        <li>Looks for headings, lists, and line breaks to estimate structure.</li>
+        <li>Analyzes sentence transitions and topic overlap to score coherence.</li>
+        <li>Tracks repeated 4-grams to detect redundancy.</li>
+        <li>Computes lexical diversity and a lightweight readability estimate.</li>
+        <li>Compares text length to a target range derived from the prompt.</li>
+      </ul>
+      <p>
+        All of these feed into a single <strong>overallQuality</strong> score stored with each response.
+        The frontend uses that score to mark the best-fit output. Because scoring is rule-based, the same
+        input always gets the same score, which keeps experiments repeatable.
+      </p>
+
+      <!-- 5. Screens & UI Snapshots -->
+      <h2>5. Screens &amp; UI Snapshots</h2>
+      <p>
+        Screens from the live app: home, single experiment run with metrics, all experiments, export center, and docs.
+      </p>
+
+      <div class="gallery">
+        <div class="image-card">
+          <img src="assets/images/llm-lab-home.png" alt="Home / New Experiment screen">
+        </div>
+        <div class="image-card">
+          <img src="assets/images/llm-lab-run-experiment.png" alt="Single experiment run with responses and metrics">
+        </div>
+        <div class="image-card">
+          <img src="assets/images/llm-lab-best-fit.png" alt="Best-fit response highlighted">
+        </div>
+        <div class="image-card">
+          <img src="assets/images/llm-lab-all-experiment.png" alt="All experiments page">
+        </div>
+        <div class="image-card">
+          <img src="assets/images/llm-lab-docs.png" alt="Docs page with metrics explanation">
+        </div>
+      </div>
+
+      <!-- 6. Impact -->
+      <h2>6. Impact & Results</h2>
+      <div class="highlight">
+        <ul>
+          <li>Parameter sweeps that used to be done manually are now automated and reproducible from the UI and API.</li>
+          <li>The SSE-based run view gives real-time progress without polling or page refreshes.</li>
+          <li>CSV exports make it easy to move results into spreadsheets or dashboards for deeper analysis.</li>
+          <li>Deterministic scoring lets you rerun experiments and compare them over time without a changing judge model.</li>
+        </ul>
+      </div>
+
+      <!-- 7. Challenges -->
+      <h2>7. Key Design Decisions</h2>
+      <ol>
+        <li>
+          <strong>Keeping each page focused.</strong>
+          Splitting the app into Experiment, All Experiments, Export Center, and Docs keeps each screen’s job clear:
+          one to run, one to browse, one to export, one to learn.
+        </li>
+        <li>
+          <strong>Deterministic metrics instead of LLM judging.</strong>
+          Using transparent text statistics makes results explainable and repeatable, which is important for calibration work.
+        </li>
+        <li>
+          <strong>Simple streaming with SSE.</strong>
+          The server only needs to push progress events, so SSE gives real-time feedback without the complexity of websockets.
+        </li>
+      </ol>
+
+      <div class="footer-links">
+        <a class="btn" href="index.html">← Back to Portfolio</a>
+      </div>
+    </div>
+  </body>
+</html>

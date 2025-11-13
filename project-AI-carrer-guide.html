@@ -10,7 +10,22 @@
 
   <style>
     .container { padding: 20px; max-width: 1400px; margin: 0 auto; font-family: sans-serif; }
-    .btn { display: inline-block; margin: 10px 0; padding: 10px 20px; background: #222; color: #fff; text-decoration: none; border-radius: 5px; }
+        .btn {
+      background: var(--accent);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--highlight);
+      transform: scale(1.05);
+    }
     .highlight { background: #f9f9f9; padding: 1rem; border-left: 4px solid #444; margin-bottom: 2rem; }
     .gallery { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 2rem; }
     .image-card { flex: 1 1 calc(50% - 30px); max-width: calc(50% - 30px); }
