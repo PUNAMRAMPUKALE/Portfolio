@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>
+    Autonomous Software Engineering Agent | Punam Pukale
+  </title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+
+  <style>
+
+    :root {
+      --bg-light: #ffffff;
+      --text-dark: #1c1c1c;
+      --accent: #003366;
+      --highlight: #556b2f;
+      --glass: rgba(255, 255, 255, 0.78);
+      --glass-border: rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-light);
+      color: var(--text-dark);
+      font-family: "Inter", "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 1rem 2rem;
+
+      position: sticky;
+      top: 0;
+
+      z-index: 1000;
+
+      backdrop-filter: blur(12px);
+
+      background: rgba(255, 255, 255, 0.95);
+
+      border-bottom:
+        1px solid var(--glass-border);
+
+      box-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav__logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav__links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav__links a:hover {
+      color: var(--accent);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 2rem;
+    }
+
+    .hero {
+      margin-top: 3rem;
+      padding: 4rem 3rem;
+
+      border-radius: 20px;
+
+      background: var(--glass);
+
+      border:
+        1px solid var(--glass-border);
+
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .hero h1 {
+      color: var(--accent);
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero h2 {
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 900px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+
+      background: var(--accent);
+
+      color: white;
+
+      padding:
+        0.8rem
+        1.4rem;
+
+      border-radius: 8px;
+
+      text-decoration: none;
+
+      font-weight: 600;
+
+      transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--highlight);
+      transform: translateY(-2px);
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section h2 {
+      color: var(--accent);
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .section h3 {
+      color: var(--accent);
+      font-size: 1.4rem;
+      margin-top: 2rem;
+    }
+
+    .section p {
+      font-size: 1.05rem;
+      color: #333;
+    }
+
+    .grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(280px, 1fr)
+        );
+
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--glass);
+
+      border:
+        1px solid var(--glass-border);
+
+      border-radius: 14px;
+
+      padding: 1.5rem;
+
+      box-shadow:
+        0 6px 18px
+        rgba(0, 0, 0, 0.05);
+
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+
+      box-shadow:
+        0 12px 28px
+        rgba(0, 0, 0, 0.09);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card p {
+      font-size: 0.98rem;
+    }
+
+    .agent-number {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--highlight);
+      margin-bottom: 0.5rem;
+    }
+
+    .architecture {
+      background: #f5f7fa;
+
+      padding: 2rem;
+
+      border-radius: 14px;
+
+      overflow-x: auto;
+
+      font-family:
+        "Courier New",
+        monospace;
+
+      line-height: 1.5;
+    }
+
+    .architecture pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+
+      margin-top: 1.5rem;
+    }
+
+    .tech {
+      background: #eef3f7;
+
+      border:
+        1px solid #dce5ec;
+
+      border-radius: 999px;
+
+      padding:
+        0.5rem
+        0.9rem;
+
+      font-size: 0.9rem;
+
+      font-weight: 600;
+    }
+
+    .workflow {
+      display: grid;
+
+      gap: 0.75rem;
+
+      margin-top: 2rem;
+    }
+
+    .workflow-step {
+      padding: 1rem 1.25rem;
+
+      background: var(--glass);
+
+      border-left:
+        4px solid
+        var(--accent);
+
+      border-radius: 8px;
+
+      box-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, 0.04);
+    }
+
+    footer {
+      background: #f5f5f5;
+
+      padding: 3rem 2rem;
+
+      text-align: center;
+
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav__links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 2rem 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .container {
+        padding: 0 1.25rem;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- NAVIGATION -->
+
+  <nav>
+
+    <a
+      href="index.html"
+      class="nav__logo"
+    >
+      Punam Pukale
+    </a>
+
+    <ul class="nav__links">
+
+      <li>
+        <a href="index.html">
+          Home
+        </a>
+      </li>
+
+      <li>
+        <a href="index.html#projects">
+          Projects
+        </a>
+      </li>
+
+      <li>
+        <a href="index.html#skills">
+          Skills
+        </a>
+      </li>
+
+      <li>
+        <a href="index.html#contact">
+          Contact
+        </a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+
+  <main class="container">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <h1>
+        Autonomous Software Engineering Agent
+      </h1>
+
+      <h2>
+        Enterprise-Grade Autonomous Multi-Agent
+        Software Delivery Platform
+      </h2>
+
+      <p>
+        An autonomous AI software engineering platform that
+        automates the software delivery lifecycle from
+        <strong>Jira issue selection</strong> through
+        <strong>repository analysis, code generation,
+        testing, GitHub Pull Request creation,
+        Jira completion, and Slack notification</strong>.
+      </p>
+
+      <div class="button-row">
+
+        <a
+          class="btn"
+          href="https://github.com/PUNAMRAMPUKALE/autonomous-software-agent"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="ri-github-fill"></i>
+          View GitHub Repository
+        </a>
+
+        <a
+          class="btn"
+          href="index.html"
+        >
+          ← Back to Portfolio
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- OVERVIEW -->
+
+    <section class="section">
+
+      <h2>
+        Project Overview
+      </h2>
+
+      <p>
+        The Autonomous Software Engineering Agent simulates
+        an AI Software Engineer capable of understanding work
+        items, analyzing repositories, retrieving relevant
+        context, generating production-ready code, validating
+        modifications, executing automated tests, reviewing
+        changes, and delivering completed implementations.
+      </p>
+
+      <p>
+        The system combines traditional software engineering
+        automation with <strong>LLM-driven decision making</strong>
+        through a modular multi-agent architecture.
+      </p>
+
+    </section>
+
+
+    <!-- PROBLEM -->
+
+    <section class="section">
+
+      <h2>
+        Problem
+      </h2>
+
+      <p>
+        Modern software development requires engineers to move
+        between multiple systems: Jira for requirements,
+        GitHub for source code, testing infrastructure for
+        validation, code review tools for quality checks,
+        and communication platforms such as Slack.
+      </p>
+
+      <p>
+        This project explores how an AI-driven engineering
+        system can coordinate these activities and execute
+        the complete workflow with minimal human intervention.
+      </p>
+
+    </section>
+
+
+    <!-- ARCHITECTURE -->
+
+    <section class="section">
+
+      <h2>
+        System Architecture
+      </h2>
+
+      <div class="architecture">
+
+<pre>
+                    User
+                      │
+                      ▼
+       Autonomous Software Engineering Agent
+                      │
+          ┌───────────┼───────────┐
+          │           │           │
+          ▼           ▼           ▼
+       Jira API   GitHub API   Slack API
+          │           │           │
+          └───────────┼───────────┘
+                      │
+                      ▼
+              LLM Provider Layer
+        OpenAI • Claude • Gemini • Ollama
+                      │
+                      ▼
+              Multi-Agent Workflow
+</pre>
+
+      </div>
+
+    </section>
+
+
+    <!-- MULTI AGENT -->
+
+    <section class="section">
+
+      <h2>
+        Multi-Agent Architecture
+      </h2>
+
+      <p>
+        The platform separates responsibilities across
+        specialized agents rather than relying on one
+        monolithic LLM workflow.
+      </p>
+
+
+      <div class="grid">
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            01
+          </div>
+
+          <h3>
+            Planner Agent
+          </h3>
+
+          <p>
+            Reads the Jira backlog, selects the next available
+            story, prioritizes the work item, and transitions
+            the issue to In Progress.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            02
+          </div>
+
+          <h3>
+            GitHub Agent
+          </h3>
+
+          <p>
+            Handles repository cloning, branch creation,
+            remote configuration, commits, and repository
+            operations.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            03
+          </div>
+
+          <h3>
+            Repository Analyzer
+          </h3>
+
+          <p>
+            Detects the programming language and framework,
+            parses the repository structure, and prepares
+            repository intelligence.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            04
+          </div>
+
+          <h3>
+            Repository Indexer
+          </h3>
+
+          <p>
+            Indexes source code, extracts symbols, and builds
+            the repository and dependency graph.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            05
+          </div>
+
+          <h3>
+            Retrieval Agent
+          </h3>
+
+          <p>
+            Retrieves the most relevant files and symbols using
+            semantic retrieval, symbol lookup, and dependency
+            analysis.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            06
+          </div>
+
+          <h3>
+            Developer Agent
+          </h3>
+
+          <p>
+            Converts the retrieved repository context and
+            engineering requirements into an implementation
+            strategy.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            07
+          </div>
+
+          <h3>
+            Coding Agent
+          </h3>
+
+          <p>
+            Uses the configured LLM provider to generate
+            complete repository files rather than isolated
+            code snippets.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            08
+          </div>
+
+          <h3>
+            Patch Agent
+          </h3>
+
+          <p>
+            Converts AI output into structured repository
+            patches and prepares modifications for validation.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            09
+          </div>
+
+          <h3>
+            Patch Validator
+          </h3>
+
+          <p>
+            Validates generated operations and prevents
+            invalid repository modifications before changes
+            are applied.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            10
+          </div>
+
+          <h3>
+            Reviewer Agent
+          </h3>
+
+          <p>
+            Performs LLM-based code review across correctness,
+            maintainability, security, performance, and code
+            quality.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            11
+          </div>
+
+          <h3>
+            Tester Agent
+          </h3>
+
+          <p>
+            Detects the project type, executes the appropriate
+            test framework, and captures test commands,
+            output, and pass/fail status.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            12
+          </div>
+
+          <h3>
+            GitHub Delivery Agent
+          </h3>
+
+          <p>
+            Stages changes, commits the implementation,
+            and pushes the feature branch.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            13
+          </div>
+
+          <h3>
+            Pull Request Agent
+          </h3>
+
+          <p>
+            Creates the GitHub Pull Request with an
+            AI-generated description, Jira reference,
+            branch metadata, and review information.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="agent-number">
+            14
+          </div>
+
+          <h3>
+            Jira & Slack Delivery
+          </h3>
+
+          <p>
+            Records implementation and test results in Jira,
+            transitions the issue to Done, and communicates
+            workflow progress through Slack.
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- WORKFLOW -->
+
+    <section class="section">
+
+      <h2>
+        End-to-End Workflow
+      </h2>
+
+      <div class="workflow">
+
+        <div class="workflow-step">
+          <strong>1. Select Jira Story</strong>
+          <br />
+          Identify the next available software engineering task.
+        </div>
+
+        <div class="workflow-step">
+          <strong>2. Move Story to In Progress</strong>
+          <br />
+          Update the Jira workflow state.
+        </div>
+
+        <div class="workflow-step">
+          <strong>3. Clone Repository</strong>
+          <br />
+          Retrieve the target source repository.
+        </div>
+
+        <div class="workflow-step">
+          <strong>4. Create Feature Branch</strong>
+          <br />
+          Create an isolated implementation branch.
+        </div>
+
+        <div class="workflow-step">
+          <strong>5. Analyze Repository</strong>
+          <br />
+          Detect language, framework, structure, symbols,
+          and dependencies.
+        </div>
+
+        <div class="workflow-step">
+          <strong>6. Retrieve Context</strong>
+          <br />
+          Identify the relevant source files and symbols.
+        </div>
+
+        <div class="workflow-step">
+          <strong>7. Generate Code</strong>
+          <br />
+          Use the selected LLM provider to generate
+          implementation changes.
+        </div>
+
+        <div class="workflow-step">
+          <strong>8. Validate Patch</strong>
+          <br />
+          Validate structured file operations before
+          modifying the repository.
+        </div>
+
+        <div class="workflow-step">
+          <strong>9. Apply Patch</strong>
+          <br />
+          Safely write the generated changes to the workspace.
+        </div>
+
+        <div class="workflow-step">
+          <strong>10. Review Changes</strong>
+          <br />
+          Perform automated AI-based code review.
+        </div>
+
+        <div class="workflow-step">
+          <strong>11. Execute Tests</strong>
+          <br />
+          Run the appropriate project test framework.
+        </div>
+
+        <div class="workflow-step">
+          <strong>12. Commit & Push</strong>
+          <br />
+          Commit validated changes and push the feature branch.
+        </div>
+
+        <div class="workflow-step">
+          <strong>13. Create Pull Request</strong>
+          <br />
+          Automatically create a GitHub Pull Request.
+        </div>
+
+        <div class="workflow-step">
+          <strong>14. Update Jira & Notify Slack</strong>
+          <br />
+          Record implementation results, update Jira,
+          and notify the engineering team.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- REPOSITORY INTELLIGENCE -->
+
+    <section class="section">
+
+      <h2>
+        Repository Intelligence
+      </h2>
+
+      <p>
+        One of the core capabilities of the platform is
+        repository understanding.
+      </p>
+
+      <div class="grid">
+
+        <div class="card">
+
+          <h3>
+            Language Detection
+          </h3>
+
+          <p>
+            Detects the programming language used by
+            the target repository.
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>
+            Framework Detection
+          </h3>
+
+          <p>
+            Identifies the project's framework and
+            development environment.
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>
+            Symbol Extraction
+          </h3>
+
+          <p>
+            Extracts relevant source symbols to improve
+            contextual retrieval.
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>
+            Dependency Graph
+          </h3>
+
+          <p>
+            Builds dependency relationships between
+            repository components.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTEXT RETRIEVAL -->
+
+    <section class="section">
+
+      <h2>
+        Context Retrieval
+      </h2>
+
+      <p>
+        Instead of providing an entire repository to an LLM,
+        the retrieval layer identifies the most relevant
+        context required for the requested software change.
+      </p>
+
+      <div class="grid">
+
+        <div class="card">
+
+          <h3>
+            Semantic Retrieval
+          </h3>
+
+          <p>
+            Retrieves files related to the requested
+            implementation task.
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>
+            Symbol Lookup
+          </h3>
+
+          <p>
+            Locates relevant classes, functions, and
+            source symbols.
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>
+            Dependency Analysis
+          </h3>
+
+          <p>
+            Identifies related components required to
+            understand an implementation.
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>
+            Context Reduction
+          </h3>
+
+          <p>
+            Reduces unnecessary repository content before
+            sending context to the LLM.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- LLM -->
+
+    <section class="section">
+
+      <h2>
+        Provider-Agnostic LLM Architecture
+      </h2>
+
+      <p>
+        The platform abstracts the LLM provider so that the
+        software engineering workflow does not depend on a
+        single model provider.
+      </p>
+
+      <div class="tech-list">
+
+        <span class="tech">
+          OpenAI
+        </span>
+
+        <span class="tech">
+          Claude
+        </span>
+
+        <span class="tech">
+          Gemini
+        </span>
+
+        <span class="tech">
+          Ollama
+        </span>
+
+        <span class="tech">
+          Mock Provider
+        </span>
+
+      </div>
+
+      <p>
+        This provider abstraction allows the same software
+        engineering workflow to operate with different
+        models depending on availability, cost, capability,
+        or deployment requirements.
+      </p>
+
+    </section>
+
+
+    <!-- CODE QUALITY -->
+
+    <section class="section">
+
+      <h2>
+        Automated Code Quality
+      </h2>
+
+      <div class="grid">
+
+        <div class="card">
+
+          <h3>
+            Patch Validation
+          </h3>
+
+          <p>
+            Generated modifications are represented as
+            structured operations and validated before
+            being applied.
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>
+            AI Code Review
+          </h3>
+
+          <p>
+            Reviews generated implementation for correctness,
+            maintainability, security, performance, and quality.
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>
+            Automated Testing
+          </h3>
+
+          <p>
+            Supports pytest, unittest, npm test, Maven,
+            and Gradle workflows.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DELIVERY -->
+
+    <section class="section">
+
+      <h2>
+        Automated Software Delivery
+      </h2>
+
+      <p>
+        After successful implementation and testing,
+        the platform continues through the delivery workflow
+        automatically.
+      </p>
+
+      <div class="grid">
+
+        <div class="card">
+
+          <h3>
+            GitHub
+          </h3>
+
+          <p>
+            Commit changes, push feature branches,
+            and create Pull Requests.
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>
+            Jira
+          </h3>
+
+          <p>
+            Attach implementation results, record test
+            results, add the Pull Request, and transition
+            completed issues.
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>
+            Slack
+          </h3>
+
+          <p>
+            Notify engineering teams about workflow
+            start, testing, Pull Request creation,
+            completion, or failure.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- TECHNOLOGY -->
+
+    <section class="section">
+
+      <h2>
+        Technology Stack
+      </h2>
+
+      <div class="tech-list">
+
+        <span class="tech">
+          Python 3.11+
+        </span>
+
+        <span class="tech">
+          OpenAI
+        </span>
+
+        <span class="tech">
+          Claude
+        </span>
+
+        <span class="tech">
+          Gemini
+        </span>
+
+        <span class="tech">
+          Ollama
+        </span>
+
+        <span class="tech">
+          Jira REST API
+        </span>
+
+        <span class="tech">
+          GitHub REST API
+        </span>
+
+        <span class="tech">
+          Slack API
+        </span>
+
+        <span class="tech">
+          PyGithub
+        </span>
+
+        <span class="tech">
+          Jira Python Library
+        </span>
+
+        <span class="tech">
+          GitPython
+        </span>
+
+        <span class="tech">
+          python-dotenv
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROJECT STRUCTURE -->
+
+    <section class="section">
+
+      <h2>
+        Project Structure
+      </h2>
+
+      <div class="architecture">
+
+<pre>
+autonomous-software-agent/
+
+├── agents/
+│   ├── planner.py
+│   ├── github_agent.py
+│   ├── repository_analyzer.py
+│   ├── indexing_agent.py
+│   ├── retrieval_agent.py
+│   ├── developer_agent.py
+│   ├── coding_agent.py
+│   ├── reviewer_agent.py
+│   ├── tester_agent.py
+│   ├── patch_agent.py
+│   ├── github_delivery_agent.py
+│   ├── pull_request_agent.py
+│   ├── jira_delivery_agent.py
+│   └── slack_notification_agent.py
+│
+├── tools/
+│   ├── jira_tool.py
+│   ├── github_tool.py
+│   ├── git_operations.py
+│   ├── github_pr_tool.py
+│   ├── slack_tool.py
+│   ├── patch_validator.py
+│   ├── file_writer.py
+│   └── llm_provider.py
+│
+├── models/
+├── prompts/
+├── workspace/
+│
+├── config.py
+├── state.py
+└── app.py
+</pre>
+
+      </div>
+
+    </section>
+
+
+    <!-- FUTURE -->
+
+    <section class="section">
+
+      <h2>
+        Future Enhancements
+      </h2>
+
+      <div class="grid">
+
+        <div class="card">
+          LangGraph orchestration
+        </div>
+
+        <div class="card">
+          CrewAI integration
+        </div>
+
+        <div class="card">
+          MCP tool support
+        </div>
+
+        <div class="card">
+          Docker sandbox execution
+        </div>
+
+        <div class="card">
+          Kubernetes deployment
+        </div>
+
+        <div class="card">
+          Self-healing workflows
+        </div>
+
+        <div class="card">
+          Multi-repository support
+        </div>
+
+        <div class="card">
+          RAG with vector databases
+        </div>
+
+        <div class="card">
+          Human approval checkpoints
+        </div>
+
+        <div class="card">
+          Multi-agent planning
+        </div>
+
+        <div class="card">
+          CI/CD integration
+        </div>
+
+        <div class="card">
+          Cost-aware model routing
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- GITHUB -->
+
+    <section class="section">
+
+      <h2>
+        Source Code
+      </h2>
+
+      <p>
+        The complete implementation is available on GitHub.
+      </p>
+
+      <div class="button-row">
+
+        <a
+          class="btn"
+          href="https://github.com/PUNAMRAMPUKALE/autonomous-software-agent"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="ri-github-fill"></i>
+          GitHub Repository
+        </a>
+
+        <a
+          class="btn"
+          href="index.html"
+        >
+          ← Back to Portfolio
+        </a>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h3>
+      Punam Pukale
+    </h3>
+
+    <p>
+      Software Engineer | FinTech & AI Platforms | Agentic AI
+    </p>
+
+    <p>
+      <a href="mailto:punampukale14@gmail.com">
+        punampukale14@gmail.com
+      </a>
+    </p>
+
+    <p>
+      <a
+        href="https://github.com/PUNAMRAMPUKALE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+      &nbsp; | &nbsp;
+      <a
+        href="https://www.linkedin.com/in/punam-pukale-a8bb83ba/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LinkedIn
+      </a>
+    </p>
+
+    <div class="footer__bar">
+      © 2026 Punam Pukale. All rights reserved.
+    </div>
+
+  </footer>
+
+
+</body>
+
+</html>
